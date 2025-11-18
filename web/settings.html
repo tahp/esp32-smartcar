@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32 SmartCar - Settings</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚙️ Settings</h1>
+            <a href="index.html" class="back-btn">← Back to Dashboard</a>
+        </header>
+
+        <section class="settings-section">
+            <h2>BLE Configuration</h2>
+            <div class="setting-item">
+                <label for="ble-timeout">Connection Timeout (seconds)</label>
+                <input type="number" id="ble-timeout" min="5" max="60" value="30">
+            </div>
+            <div class="setting-item">
+                <label for="ble-range">Max Range (meters)</label>
+                <input type="number" id="ble-range" min="1" max="50" value="10">
+            </div>
+        </section>
+
+        <section class="settings-section">
+            <h2>Relay Control</h2>
+            <div class="setting-item">
+                <label for="relay-delay">Activation Delay (ms)</label>
+                <input type="number" id="relay-delay" min="0" max="5000" step="100" value="500">
+            </div>
+            <div class="setting-item">
+                <label for="starter-duration">Starter Max Duration (seconds)</label>
+                <input type="number" id="starter-duration" min="1" max="10" value="3">
+            </div>
+        </section>
+
+        <section class="settings-section">
+            <h2>Power Management</h2>
+            <div class="setting-item">
+                <label for="low-battery">Low Battery Threshold (V)</label>
+                <input type="number" id="low-battery" min="11.0" max="12.5" step="0.1" value="11.8">
+            </div>
+            <div class="setting-item">
+                <label for="sleep-timeout">Auto-Sleep Timeout (minutes)</label>
+                <input type="number" id="sleep-timeout" min="1" max="120" value="30">
+            </div>
+        </section>
+
+        <section class="settings-section">
+            <h2>Security</h2>
+            <div class="setting-item">
+                <label>
+                    <input type="checkbox" id="require-pin">
+                    Require PIN for starter
+                </label>
+            </div>
+            <div class="setting-item">
+                <label>
+                    <input type="checkbox" id="geofence-enabled">
+                    Enable Geofencing
+                </label>
+            </div>
+        </section>
+
+        <section class="settings-section">
+            <h2>Notifications</h2>
+            <div class="setting-item">
+                <label>
+                    <input type="checkbox" id="notify-unlock" checked>
+                    Alert on door unlock
+                </label>
+            </div>
+            <div class="setting-item">
+                <label>
+                    <input type="checkbox" id="notify-lowbatt" checked>
+                    Alert on low battery
+                </label>
+            </div>
+        </section>
+
+        <div class="button-group">
+            <button class="btn-primary" onclick="saveSettings()">💾 Save Settings</button>
+            <button class="btn-secondary" onclick="resetDefaults()">🔄 Reset Defaults</button>
+        </div>
+
+        <footer>
+            <p id="save-status"></p>
+        </footer>
+    </div>
+
+    <script src="settings.js"></script>
+</body>
+</html>
